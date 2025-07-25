@@ -94,7 +94,7 @@ export default function CardSlider() {
     }, [])
 
     return (
-        <div className="w-full mt-9 relative flex items-center justify-center flex-col gap-3 px-2 min-[450px]:px-0 z-5">
+        <div className="w-full mt-9 relative flex items-center justify-center flex-col gap-3 px-1 min-[450px]:px-0 z-5">
             <div className="w-full relative">
                 <NavigationButtons mode="prev" />
 
@@ -115,11 +115,11 @@ export default function CardSlider() {
                             slidesPerView: 1,
                             spaceBetween: 13
                         },
-                        500: {
+                        635: {
                             slidesPerView: 2,
                             spaceBetween: 20
                         },
-                        800: {
+                        1000: {
                             slidesPerView: 3
                         }
                     }}
