@@ -31,7 +31,7 @@
 
 @layer utilities {
     .w-custom {
-        width: var(--width);
+        @apply w-full max-w-[var(--width)] mx-auto px-[max(1.75rem,_env(safe-area-inset-left))];
     }
 }
 
@@ -53,11 +53,5 @@
 
     .swiper-pagination-bullet.swiper-pagination-bullet-active {
         @apply !bg-theme !w-5
-    }
-}
-
-@media(max-width: 1165px) {
-    :root {
-        --width: 89%;
     }
 }
