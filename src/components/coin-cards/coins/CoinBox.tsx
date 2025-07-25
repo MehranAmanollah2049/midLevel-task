@@ -9,7 +9,7 @@ type Props = {
 }
 
 const CoinVariants = {
-    hidden: { opacity: 0, scale: 0.80 },
+    hidden: { opacity: 0, scale: 0.70 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
 }
 
