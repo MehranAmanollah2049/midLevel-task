@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+    --width: 1000px;
+
+    --theme: #2158cf;
+    --gray-200: #2a3544;
+    --gray-300: #d5dae2;
+}
+
+@theme {
+    --font-inter-regular: 'inter_regular';
+    --font-inter-medium: 'inter_medium';
+    --font-inter-bold: 'inter_bold';
+    --font-inter-heavy: 'inter_heavy';
+
+    --color-theme: var(--theme);
+    --color-gray-200: var(--gray-200);
+    --color-gray-300: var(--gray-300);
+}
+
+@layer base {
+    body {
+        @apply font-inter-regular bg-black;
+    }
+}
+
+@layer utilities {
+    .w-custom {
+        width: var(--width);
+    }
+}
