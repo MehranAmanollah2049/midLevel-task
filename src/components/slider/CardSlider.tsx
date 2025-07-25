@@ -19,7 +19,7 @@ export default function CardSlider() {
 
     // این متد صرفا تستی بوده و برای تغییر رمز ارز ها استفاده میشه
     const fetch_coins = async (): Promise<void> => {
-        const api = await fetch("https://api.coinranking.com/v2/coins?limit=15");
+        const api = await fetch("https://api.coinranking.com/v2/coins?limit=20");
         const res = await api.json();
         const coins: any[] = res.data.coins;
         const mapedCoins = coins.map(coin => ({
@@ -31,13 +31,34 @@ export default function CardSlider() {
             change: coin.change
         }))
 
-        const shuffled = [...mapedCoins].sort(() => 0.3 - Math.random());
+        const shuffled = shuffleCoins(mapedCoins);
 
         setList1(shuffled.slice(0, 5));
         setList2(shuffled.slice(5, 10));
         setList3(shuffled.slice(10, 15));
 
         setIsLoading(false)
+    }
+
+    function shuffleCoins(array: Coin[]): Coin[] {
+        const result = [...array];
+
+        for (let i = 0; i < 2; i++) {
+            const index1 = Math.floor(Math.random() * result.length);
+            let index2 = Math.floor(Math.random() * result.length);
+
+            // ensure different indices
+            while (index2 === index1) {
+                index2 = Math.floor(Math.random() * result.length);
+            }
+
+            // swap the items
+            const temp = result[index1];
+            result[index1] = result[index2];
+            result[index2] = temp;
+        }
+
+        return result;
     }
 
     // این متد صرفا تستی بوده و برای تغییر رمز ارز ها استفاده میشه
