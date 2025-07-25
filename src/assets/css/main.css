@@ -2,7 +2,7 @@
 @import "./fonts.css";
 
 :root {
-    --width: 1000px;
+    --width: 900px;
 
     --theme: #2158cf;
     --theme-light: #4072df;
@@ -39,6 +39,18 @@
                 var(--theme),
                 var(--theme-light));
         @apply font-inter-medium flex min-h-[42px] items-center justify-center gap-1 rounded-lg px-4 pb-[0.1rem] text-[13px] text-white transition-all hover:opacity-90;
+    }
+
+    .swiper-button-disabled {
+        @apply opacity-8 pointer-events-none;
+    }
+
+    .swiper-pagination-bullet {
+        @apply !size-2 !bg-gray-100 !rounded-full transition-all
+    }
+
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        @apply !bg-theme !w-5
     }
 }
 
