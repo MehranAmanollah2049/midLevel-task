@@ -5,25 +5,38 @@ type Props = {
     className: string
 }
 
+const container = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.04,
+        },
+    },
+};
+
+const child = {
+    hidden: { y: 10, opacity: 0, filter: "blur(17px)" },
+    visible: { y: 0, opacity: 1, filter: "blur(0px)" },
+};
+
+
 export default function TextSplitAnimation({ text, className }: Props) {
     const words = text.trim().split(" ")
 
     return (
-        <motion.h1 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.3 }} viewport={{ once: true }} className={`flex flex-wrap justify-center gap-[3px] ${className}`}>
-            {
-                words.map((word, index) => (
-                    <motion.span
-                        key={index}
-                        initial={{ opacity: 0, y: 8, filter: "blur(17px)" }}
-                        whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.350, delay: (index !== -1 ? index * 0.040 : 0) }}
-                        style={{ display: "inline-block" }}
-                    >
-                        {word}
-                    </motion.span>
-                ))
-            }
+        <motion.h1
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className={`flex flex-wrap justify-center gap-[3px] ${className}`}
+        >
+            {words.map((word, index) => (
+                <motion.span key={index} variants={child} className="inline-block">
+                    {word}
+                </motion.span>
+            ))}
         </motion.h1>
     )
 }

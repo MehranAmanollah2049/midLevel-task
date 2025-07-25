@@ -7,12 +7,37 @@ type Props = {
     className: string
 }
 
+const containerVariant = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            delay: 0.2,
+            duration: 0.6,
+            staggerChildren: 0.4,
+            delayChildren: 0.4
+        }
+    }
+}
+
+const wordVariant = {
+    hidden: { scale: 0.9, opacity: 0, filter: "blur(8px)" },
+    visible: { scale: 1, opacity: 1, filter: "blur(0)" },
+    transition: { type: "spring", stiffness: 300, damping: 20 }
+};
+
 export default function TitleAnimation({ text, animatedTexts, coloredTexts, className }: Props) {
 
     const words = text.trim().split(" ")
 
     return (
-        <motion.h1 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 , delay: 0.2 }} viewport={{ once: true }} className={className}>
+        <motion.h1
+            className={className}
+            variants={containerVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+        >
             {words.map((word, index) => {
                 const isAnimated = animatedTexts.includes(word);
                 const isColored = coloredTexts.includes(word);
@@ -20,19 +45,11 @@ export default function TitleAnimation({ text, animatedTexts, coloredTexts, clas
                 const classNames = [isColored ? "text-theme" : "", "mx-1"].filter(Boolean).join(" ");
 
                 if (isAnimated) {
-
-                    const delayIndex = animatedTexts.findIndex((t) => t === word);
-                    const delay = delayIndex === 0 ? 0.3 : delayIndex * 0.3;
-
                     return (
                         <motion.span
                             key={index}
-                            initial={{ y: 7 , filter: "blur(5px)" }}
-                            whileInView={{ y: 0 , filter: "blur(0)" }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.3, delay }}
-                            style={{ display: "inline-block" }}
-                            className={classNames}
+                            variants={wordVariant}
+                            className={`inline-block ${classNames}`}
                         >
                             {word}
                         </motion.span>
