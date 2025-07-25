@@ -40,7 +40,7 @@ export default function CardSlider() {
         setIsLoading(false)
     }
 
-     // این متد صرفا تستی بوده و برای تغییر رمز ارز ها استفاده میشه
+    // این متد صرفا تستی بوده و برای تغییر رمز ارز ها استفاده میشه
     useEffect(() => {
         // برای نمایش لودینگ به مدت بلند تر
         setTimeout(() => {
@@ -62,6 +62,7 @@ export default function CardSlider() {
                 <NavigationButtons mode="prev" />
 
                 <Swiper
+                    className='!overflow-visible min-[500px]:!overflow-hidden'
                     modules={[Navigation, Pagination]}
                     spaceBetween={20}
                     navigation={{
@@ -75,9 +76,11 @@ export default function CardSlider() {
                     breakpoints={{
                         0: {
                             slidesPerView: 1,
+                            spaceBetween: 13
                         },
                         500: {
                             slidesPerView: 2,
+                            spaceBetween: 20
                         },
                         800: {
                             slidesPerView: 3

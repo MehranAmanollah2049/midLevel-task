@@ -1,7 +1,7 @@
 
 export default function CoinLoading() {
     return (
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex items-center justify-between px-5">
             <div className="flex items-center justify-start gap-2">
                 <div className="size-9 rounded-full bg-gray-500 animation-pluse"></div>
                 <div className="flex flex-col gap-1">
