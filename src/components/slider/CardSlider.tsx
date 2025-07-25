@@ -7,10 +7,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import NavigationButtons from './NavigationButtons';
 import CoinCard from '../coin-cards/CoinCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Coin } from '../../types/coin';
 
 export default function CardSlider() {
+
+    const allCoinsRef = useRef<Coin[]>([]);
 
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [List1, setList1] = useState<Coin[]>([]);
@@ -31,48 +33,62 @@ export default function CardSlider() {
             change: coin.change
         }))
 
-        const shuffled = shuffleCoins(mapedCoins);
+        allCoinsRef.current = mapedCoins;
 
-        setList1(shuffled.slice(0, 5));
-        setList2(shuffled.slice(5, 10));
-        setList3(shuffled.slice(10, 15));
+        setList1(mapedCoins.slice(0, 5));
+        setList2(mapedCoins.slice(5, 10));
+        setList3(mapedCoins.slice(10, 15));
 
         setIsLoading(false)
     }
 
-    function shuffleCoins(array: Coin[]): Coin[] {
-        const result = [...array];
+    function shuffle3Items(list: Coin[], allCoins: Coin[]): Coin[] {
+        const newList = [...list];
+        const usedUuids = new Set(list.map(coin => coin.uuid));
 
-        for (let i = 0; i < 2; i++) {
-            const index1 = Math.floor(Math.random() * result.length);
-            let index2 = Math.floor(Math.random() * result.length);
-
-            // ensure different indices
-            while (index2 === index1) {
-                index2 = Math.floor(Math.random() * result.length);
-            }
-
-            // swap the items
-            const temp = result[index1];
-            result[index1] = result[index2];
-            result[index2] = temp;
+        // Pick 3 unique indices from current list
+        const indicesToReplace: any[] = [];
+        while (indicesToReplace.length < 2) {
+            const idx = Math.floor(Math.random() * newList.length);
+            if (!indicesToReplace.includes(idx)) indicesToReplace.push(idx);
         }
 
-        return result;
+        // Pick 3 random coins not already in list
+        const replacementCoins: Coin[] = [];
+        while (replacementCoins.length < 3) {
+            const candidate = allCoins[Math.floor(Math.random() * allCoins.length)];
+            if (!usedUuids.has(candidate.uuid)) {
+                usedUuids.add(candidate.uuid);
+                replacementCoins.push(candidate);
+            }
+        }
+
+        // Replace
+        indicesToReplace.forEach((idx, i) => {
+            newList[idx] = replacementCoins[i];
+        });
+
+        return newList;
     }
+
 
     // این متد صرفا تستی بوده و برای تغییر رمز ارز ها استفاده میشه
     useEffect(() => {
         // برای نمایش لودینگ به مدت بلند تر
         setTimeout(() => {
             fetch_coins();
-        }, 1400);
+        }, 1300);
 
         let reload = setInterval(() => {
             console.log("COINS UPDATED");
 
-            fetch_coins()
-        }, 6000);
+            // shuffle
+            if (allCoinsRef.current.length) {
+                setList1(prev => shuffle3Items(prev, allCoinsRef.current));
+                setList2(prev => shuffle3Items(prev, allCoinsRef.current));
+                setList3(prev => shuffle3Items(prev, allCoinsRef.current));
+            }
+        }, 3500);
 
         return () => clearInterval(reload)
     }, [])
