@@ -31,7 +31,7 @@
 
 @layer utilities {
     .w-custom {
-        @apply w-full max-w-[var(--width)] mx-auto px-[max(1.75rem,_env(safe-area-inset-left))];
+        @apply w-full max-w-[var(--width)] px-[1.75rem];
     }
 }
 
