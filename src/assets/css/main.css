@@ -2,10 +2,11 @@
 @import "./fonts.css";
 
 :root {
-    --width: 900px;
+    --width: 950px;
 
-    --theme: #2158cf;
-    --theme-light: #4072df;
+    --theme: #3b82f6;
+    --theme-exra-light: #3b83f628;
+    --theme-light: #6695e0;
     --gray-200: #3c495a;
     --gray-300: #d5dae2;
 }
@@ -17,6 +18,7 @@
     --font-inter-heavy: 'inter_heavy';
 
     --color-theme: var(--theme);
+    --color-theme-exra-light: var(--theme-exra-light);
     --color-gray-200: var(--gray-200);
     --color-gray-300: var(--gray-300);
 }
