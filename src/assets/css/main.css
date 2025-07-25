@@ -6,7 +6,7 @@
 
     --theme: #2158cf;
     --theme-light: #4072df;
-    --gray-200: #2a3544;
+    --gray-200: #3c495a;
     --gray-300: #d5dae2;
 }
 
@@ -39,5 +39,11 @@
                 var(--theme),
                 var(--theme-light));
         @apply font-inter-medium flex min-h-[42px] items-center justify-center gap-1 rounded-lg px-4 pb-[0.1rem] text-[13px] text-white transition-all hover:opacity-90;
+    }
+}
+
+@media(max-width: 1165px) {
+    :root {
+        --width: 95%;
     }
 }
