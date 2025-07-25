@@ -14,10 +14,10 @@ export default function TextSplitAnimation({ text, className }: Props) {
                 words.map((word, index) => (
                     <motion.span
                         key={index}
-                        initial={{ opacity: 0, y: 4, filter: "blur(15px)" }}
+                        initial={{ opacity: 0, y: 12, filter: "blur(17px)" }}
                         whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: (index !== -1 ? index * 0.050 : 0) }}
+                        transition={{ duration: 0.350, delay: (index !== -1 ? index * 0.040 : 0) }}
                         style={{ display: "inline-block" }}
                     >
                         {word}
