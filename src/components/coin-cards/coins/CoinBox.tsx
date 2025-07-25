@@ -9,7 +9,7 @@ type Props = {
 }
 
 const CoinVariants = {
-    hidden: { opacity: 0, scale: 0.70 },
+    hidden: { opacity: 0, scale: 0.80 },
     visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } },
 }
 
@@ -23,7 +23,7 @@ export default React.memo(function CoinBox({ coin, index }: Props) {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="w-full absolute left-0 flex items-center justify-between gap-2"
+            className="w-full absolute left-0 flex items-center justify-between gap-2 will-change-transform will-change-opacity"
             style={{ top: `${index * 52}px` }}
         >
             <div className="w-6/10 flex items-center justify-start gap-2">
