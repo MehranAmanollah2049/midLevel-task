@@ -94,7 +94,7 @@ export default function CardSlider() {
     }, [])
 
     return (
-        <div className="w-full mt-9 relative flex items-center justify-center flex-col gap-3 px-4 min-[450px]:px-0 z-5">
+        <div className="w-full mt-9 relative flex items-center justify-center flex-col gap-3 px-2 min-[450px]:px-0 z-5">
             <div className="w-full relative">
                 <NavigationButtons mode="prev" />
 
