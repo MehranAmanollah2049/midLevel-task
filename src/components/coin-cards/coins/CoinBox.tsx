@@ -34,7 +34,7 @@ export default React.memo(function CoinBox({ coin, index }: Props) {
                 </div>
             </div>
             <div className="w-3/10 flex flex-col items-start justify-start">
-                <p className="text-white text-[12px] w-full text-right">{formatSubzeroPrice(coin.price)}</p>
+                <p className="text-white text-[12px] w-full text-right">{formatSubzeroPrice(Number(coin.price))}</p>
                 <p className={`${Number(coin.change) > 0 ? 'text-green-500' : 'text-red-500'} text-[12px] w-full text-right`}>{coin.change}</p>
             </div>
         </motion.div>
