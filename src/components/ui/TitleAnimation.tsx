@@ -14,15 +14,15 @@ const containerVariant = {
         transition: {
             delay: 0.2,
             duration: 0.6,
-            staggerChildren: 0.4,
-            delayChildren: 0.4
+            staggerChildren: 0.2,
+            delayChildren: 0.3
         }
     }
 }
 
 const wordVariant = {
-    hidden: { scale: 0.9, opacity: 0, filter: "blur(8px)" },
-    visible: { scale: 1, opacity: 1, filter: "blur(0)" },
+    hidden: {  opacity: 0, filter: "blur(8px)" },
+    visible: {  opacity: 1, filter: "blur(0)" },
     transition: { type: "spring", stiffness: 300, damping: 20 }
 };
 

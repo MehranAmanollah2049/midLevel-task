@@ -14,7 +14,7 @@ export default function OpportunitiesSection() {
                 </TagBox>
                 <TitleAnimation text="TRADE YOUR FAVOURATE MARKETS" animatedTexts={["FAVOURATE"]} coloredTexts={["TRADE"]} className="text-[30px]/9 min-[385px]:text-[33px]/10 min-[800px]:text-[35px] text-white font-inter-bold mt-1 text-center" />
                 <TextSplitAnimation text="Want to buy Bitcoin outright or trade CFDs on Gold or EUR/USD? We've got you covered with access to 100+ global markets on one platform." className="text-gray-400 text-[14.5px]/5 min-[400px]:text-[15px]/5 min-[460px]:text-[17px] w-full min-[1150px]:w-[64%]" />
-                <motion.div initial={{ opacity: 0 , scale: 0.60 }} whileInView={{ opacity: 1 , scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 , type: "spring", bounce: 0.5 , duration: 1 }}>
+                <motion.div initial={{ opacity: 0 , scale: 0.60 }} whileInView={{ opacity: 1 , scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.8 , type: "spring", bounce: 0.6 , duration: 1 }}>
                     <Button className="mt-5">
                         View All Coins
                         <svg xmlns="http://www.w3.org/2000/svg" className="size-4 fill-white translate-y-[1px]" id="Outline" viewBox="0 0 24 24" width="512" height="512"><path d="M18,12h0a2,2,0,0,0-.59-1.4l-4.29-4.3a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42L15,11H5a1,1,0,0,0,0,2H15l-3.29,3.29a1,1,0,0,0,1.41,1.42l4.29-4.3A2,2,0,0,0,18,12Z" /></svg>
